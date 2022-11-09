@@ -17,7 +17,7 @@ const botName = 'ChatCord Bot';
 io.on('connection', (socket) => {
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCoard!')); // single
+    socket.emit('message', formatMessage(botName, 'Welcome to ChatCoard!'));
 
     // broadcast when a user connect
     socket.broadcast.emit('message', formatMessage(botName, 'A user has joined chat'));
