@@ -1,6 +1,6 @@
 const path = require('path');
+const http = require('http'); 
 const express = require('express');
-const http = require('http');
 const socketio = require('socket.io');
 
 const app = express();
@@ -12,11 +12,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Run when client connects
 io.on('connection', (socket) => {
-    console.log('New WS Connections');
+    console.log('New WS Connections.....');
+
+    socket.emit('message', 'Welcome to ChatCoard!');
+
+    
 });
 
 const PORT = 3000 || process.env.PORT;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
