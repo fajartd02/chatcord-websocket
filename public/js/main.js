@@ -9,6 +9,7 @@ socket.on('message', (message) => {
 
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
+
 });
 
 chatForm.addEventListener('submit', (e) => {
@@ -17,7 +18,12 @@ chatForm.addEventListener('submit', (e) => {
     // get message text
     const msg = e.target.elements.msg.value;
 
+    // Emit message to server
     socket.emit('chatMessage', msg);
+
+    // Clear input
+    e.target.elements.msg.value = '';
+    e.target.elements.msg.focus();
 });
 
 function outputMessage(message) {
